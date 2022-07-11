@@ -1,4 +1,4 @@
-name: Back up my blog database
+name: Experiment
 
 on:
   push:
@@ -29,6 +29,6 @@ jobs:
         echo 'inputs.force_run: ${{ inputs.force_run }}'
         echo 'needs.one.outputs.change_detected: ${{ needs.one.outputs.change_detected }}'
     - name: Run conditionally
-      if: ${{ needs.backup.one.change_detected || inputs.force_run }}
+      if: ${{ needs.one.outputs.change_detected || inputs.force_run }}
       run: |-
         echo "This is from run conditionally"
