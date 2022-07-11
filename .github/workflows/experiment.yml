@@ -12,10 +12,13 @@ on:
 jobs:
   one:
     runs-on: ubuntu-latest
+    outputs:
+      change_detected: ${{ steps.output_var.outputs.change_detected }}
     steps:
     - name: Check out repo
       uses: actions/checkout@v3
     - name: Set output variable
+      id: output_var
       run: |-
         echo "::set-output name=change_detected::1"
   two:
