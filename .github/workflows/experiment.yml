@@ -24,6 +24,8 @@ jobs:
     steps:
     - name: Print stuff
       run: |-
+        echo 'inputs: ${{ inputs }}'
+        echo 'needs: ${{ needs }}'
         echo 'inputs.force_run: ${{ inputs.force_run }}'
         echo 'needs.one.outputs.change_detected: ${{ needs.one.outputs.change_detected }}'
     - name: Run conditionally
