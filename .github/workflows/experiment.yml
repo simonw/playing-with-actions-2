@@ -1,0 +1,32 @@
+name: Back up my blog database
+
+on:
+  push:
+  workflow_dispatch:
+    inputs:
+      force_run:
+        description: 'Run even if no change_detected'
+        required: false 
+        type: boolean
+
+jobs:
+  one:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Check out repo
+      uses: actions/checkout@v3
+    - name: Set output variable
+      run: |-
+        echo "::set-output name=change_detected::1"
+  two:
+    runs-on: ubuntu-latest
+    needs: one
+    steps:
+    - name: Print stuff
+      run: |-
+        echo 'inputs.force_run: ${{ inputs.force_run }}'
+        echo 'needs.one.outputs.change_detected: ${{ needs.one.outputs.change_detected }}'
+    - name: Run conditionally
+      if: ${{ needs.backup.one.change_detected || inputs.force_run }}
+      run: |-
+        echo "This is from run conditionally"
