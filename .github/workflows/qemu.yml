@@ -8,6 +8,14 @@ jobs:
   one:
     runs-on: ubuntu-latest
     steps:
+    - name: Display qemu specified architecture (s390x - big endian)
+      uses: docker://multiarch/ubuntu-core:s390x-bionic
+      with:
+        args: >
+          bash -c
+          "uname -a &&
+          lscpu | grep Endian
+          "
     - name: Configure and compile using qemu for the specified architecture (s390x - big endian)
       uses: docker://multiarch/ubuntu-core:s390x-bionic
       with:
