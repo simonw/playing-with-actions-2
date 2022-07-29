@@ -16,6 +16,5 @@ jobs:
           "apt-get -y update &&
           apt-get -y install git &&
           python --version &&
-          python3 --version &&
-          python -c 'import sys; print(sys.byteorder)'
+          python3 --version
           "
