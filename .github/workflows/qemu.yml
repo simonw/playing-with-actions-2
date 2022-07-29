@@ -9,13 +9,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: Configure and compile using qemu for the specified architecture (s390x - big endian)
-        uses: docker://multiarch/ubuntu-core:s390x-bionic
-        with:
-          args: >
-            bash -c
-            "apt-get -y update &&
-            apt-get -y install git &&
-            python --version &&
-            python3 --version &&
-            python -c 'import sys; print(sys.byteorder)'
-            "
+      uses: docker://multiarch/ubuntu-core:s390x-bionic
+      with:
+        args: >
+          bash -c
+          "apt-get -y update &&
+          apt-get -y install git &&
+          python --version &&
+          python3 --version &&
+          python -c 'import sys; print(sys.byteorder)'
+          "
