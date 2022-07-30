@@ -1,4 +1,4 @@
-name: QEMU to run s390x-bionic
+name: QEMU to run s390x-focal
 
 on:
   push:
