@@ -19,8 +19,13 @@ jobs:
           "uname -a &&
           lscpu | grep Endian &&
           apt-get -y update &&
-          apt-get -y install python python3 &&
-          python --version &&
+          apt-get -y install python3 git &&
           python3 --version &&
-          python -c 'import sys; print(sys.byteorder)'
+          python -c 'import sys; print(sys.byteorder)' &&
+          git clone https://github.com/simonw/sqlite-fts4 &&
+          cd sqlite-fts4 &&
+          python3 -m venv venv &&
+          source venv/bin/activate &&
+          pip install -e '.[test]' &&
+          pytest
           "
